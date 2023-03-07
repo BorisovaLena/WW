@@ -92,6 +92,9 @@
     <Compile Include="pages\PageAuto.xaml.cs">
       <DependentUpon>PageAuto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\PageTovar.xaml.cs">
+      <DependentUpon>PageTovar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PickupPoint.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -126,6 +129,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="pages\PageAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\PageTovar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

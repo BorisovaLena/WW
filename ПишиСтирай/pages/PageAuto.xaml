@@ -9,23 +9,27 @@
       Title="PageAuto">
 
     <Grid>
-        <StackPanel>
+        <StackPanel VerticalAlignment="Center">
             <TextBlock Text="Авторизация"/>
-            <GroupBox Header="Введите логин">
-                <TextBox Name="tbLodin"/>
-            </GroupBox>
-            <GroupBox Header="Введите пароль">
-                <PasswordBox Name="Password"/>
-            </GroupBox>
-            <StackPanel Name="spCapcha" Width="150" Visibility="Collapsed">
-                <Canvas Name="can" Width="100" Height="50" Background="AliceBlue"></Canvas>
-                <GroupBox Header="Введите текст с картинки">
-                    <TextBox Name="tbText"/>
+            
+            <StackPanel Width="200">
+                <GroupBox Header="Введите логин">
+                    <TextBox Name="tbLodin"/>
                 </GroupBox>
+                <GroupBox Header="Введите пароль">
+                    <PasswordBox Name="Password"/>
+                </GroupBox>
+                <StackPanel Name="spCapcha" Width="150" Visibility="Collapsed">
+                    <Canvas Name="can" Width="100" Height="50" Background="AliceBlue"></Canvas>
+                    <GroupBox Header="Введите текст с картинки">
+                        <TextBox Name="tbText" TextChanged="tbText_TextChanged" MaxLength="4"/>
+                    </GroupBox>
+                </StackPanel>
+                <Button Name="btnEnter" Content="Войти" Click="btnEnter_Click"/>
+                <Button Name="btnGuest" Content="Войти как гость" Click="btnGuest_Click"/>
+                <TextBlock Name="tbTimer" Visibility="Collapsed"/>
             </StackPanel>
             
-            <Button Name="btnEnter" Content="Войти" Click="btnEnter_Click"/>
-            <Button Name="btnGuest" Content="Войти как гость" Click="btnGuest_Click"/>
         </StackPanel>
     </Grid>
 </Page>

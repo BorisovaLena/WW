@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace ПишиСтирай.pages
 {
@@ -20,9 +21,36 @@ namespace ПишиСтирай.pages
     /// </summary>
     public partial class PageAuto : Page
     {
+        string str = "";
+        DispatcherTimer dispatcher = new DispatcherTimer();
+        int sec = 10;
         public PageAuto()
         {
             InitializeComponent();
+        }
+
+        public PageAuto(int i)
+        {
+            InitializeComponent();
+            generationChapcha();
+            spCapcha.Visibility = Visibility.Visible;
+            btnEnter.IsEnabled = false;
+            dispatcher.Interval = new TimeSpan(0, 0, 1);
+            dispatcher.Tick += new EventHandler(DisTimer_Tick);
+            dispatcher.Start();
+            tbTimer.Visibility = Visibility.Visible;
+        }
+
+        private void DisTimer_Tick(object sender, EventArgs e)
+        {
+            tbTimer.Text = "Вы сможете войти через " + sec + " секунд";
+            sec--;
+            if (sec < 0)
+            {
+                dispatcher.Stop();
+                btnEnter.IsEnabled = true;
+                tbTimer.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void btnEnter_Click(object sender, RoutedEventArgs e)
@@ -42,7 +70,7 @@ namespace ПишиСтирай.pages
                 }
                 else
                 {
-
+                    classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar());
                 }
             }
         }
@@ -66,7 +94,7 @@ namespace ПишиСтирай.pages
                 };
                 can.Children.Add(l1);
             }
-            string str = "";
+            
             for (int n = 0; n < 4; n++)
             {
                 int i = random.Next(2);
@@ -88,6 +116,29 @@ namespace ПишиСтирай.pages
                 Margin = new Thickness(10)
             };
             can.Children.Add(tb);
+        }
+
+        private void tbText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(tbText.Text.Length==4)
+            {
+                if(str == tbText.Text)
+                {
+                    User userAuto = classes.ClassBase.Base.User.FirstOrDefault(z => z.UserLogin == tbLodin.Text && z.UserPassword == Password.Password);
+                    if (userAuto == null)
+                    {
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto(2));
+                    }
+                    else
+                    {
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar());
+                    }
+                }
+                else
+                {
+                    classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto(2));
+                }
+            }
         }
     }
 }
