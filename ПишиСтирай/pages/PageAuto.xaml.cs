@@ -59,10 +59,10 @@ namespace ПишиСтирай.pages
             {
                 Line l1 = new Line()
                 {
-                    X1 = random.Next(201),
-                    Y1 = random.Next(101),
-                    X2 = random.Next(201),
-                    Y2 = random.Next(101)
+                    X1 = random.Next(101),
+                    Y1 = random.Next(51),
+                    X2 = random.Next(101),
+                    Y2 = random.Next(51)
                 };
                 can.Children.Add(l1);
             }
@@ -73,7 +73,7 @@ namespace ПишиСтирай.pages
                 switch(i)
                 {
                     case 0:
-                        str += random.Next('a', 'z');
+                        str += (char)random.Next('a', 'z');
                         break;
                     case 1:
                         str += random.Next(10);
@@ -83,7 +83,9 @@ namespace ПишиСтирай.pages
             TextBlock tb = new TextBlock()
             {
                 Text = str,
-                TextDecorations = TextDecorations.Strikethrough
+                TextDecorations = TextDecorations.Strikethrough,
+                FontSize = 18,
+                Margin = new Thickness(10)
             };
             can.Children.Add(tb);
         }

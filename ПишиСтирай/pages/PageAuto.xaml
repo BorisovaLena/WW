@@ -17,8 +17,8 @@
             <GroupBox Header="Введите пароль">
                 <PasswordBox Name="Password"/>
             </GroupBox>
-            <StackPanel Name="spCapcha" Width="200" Visibility="Collapsed">
-                <Canvas Name="can" Width="200" Height="100" Background="AliceBlue"></Canvas>
+            <StackPanel Name="spCapcha" Width="150" Visibility="Collapsed">
+                <Canvas Name="can" Width="100" Height="50" Background="AliceBlue"></Canvas>
                 <GroupBox Header="Введите текст с картинки">
                     <TextBox Name="tbText"/>
                 </GroupBox>
