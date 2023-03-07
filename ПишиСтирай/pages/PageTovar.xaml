@@ -8,7 +8,42 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageTovar">
 
+    <Page.Resources>
+        <BitmapImage x:Key="NoPhoto" UriSource="..\pictures\picture.png"/>
+    </Page.Resources>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="5" CornerRadius="5" BorderBrush="Black">
+                        <Grid>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Photo, TargetNullValue={StaticResource NoPhoto}}" Width="100"/>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding ProductName}"/>
+                                    <TextBlock Text="{Binding ProductDescription}"/>
+                                    <TextBlock Text="{Binding ManufacturerString}"/>
+                                    <TextBlock Text="{Binding Cost}"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Discount}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>                
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </Grid>
 </Page>

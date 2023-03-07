@@ -77,7 +77,7 @@ namespace ПишиСтирай.pages
 
         private void btnGuest_Click(object sender, RoutedEventArgs e)
         {
-
+            classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar());
         }
 
         public void generationChapcha() //генерация капчи

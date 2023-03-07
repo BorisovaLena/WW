@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="classes\ClassBase.cs" />
     <Compile Include="classes\ClassFrame.cs" />
+    <Compile Include="classes\ClassProduct.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

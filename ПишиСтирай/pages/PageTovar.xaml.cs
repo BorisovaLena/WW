@@ -23,6 +23,7 @@ namespace ПишиСтирай.pages
         public PageTovar()
         {
             InitializeComponent();
+            lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
         }
     }
 }

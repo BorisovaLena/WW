@@ -24,7 +24,6 @@ namespace ПишиСтирай
         public int ProductName { get; set; }
         public string ProductDescription { get; set; }
         public int ProductCategory { get; set; }
-        public byte[] ProductPhoto { get; set; }
         public int ProductProvider { get; set; }
         public int ProductManufacturer { get; set; }
         public decimal ProductCost { get; set; }
@@ -32,6 +31,7 @@ namespace ПишиСтирай
         public Nullable<double> ProductDiscountAmount { get; set; }
         public int ProductQuantityInStock { get; set; }
         public string ProductStatus { get; set; }
+        public string ProductPhoto { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
