@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ПишиСтирай
 {
@@ -16,11 +17,27 @@ namespace ПишиСтирай
             }
         }
 
-        public string Cost
+        public string CostOld
         {
             get
             {
-                return "Цена: "+ ProductCost;
+                return string.Format("{0:C2}", ProductCost);
+            }
+        }
+
+        public string CostNew
+        {
+            get
+            {
+                if(ProductDiscountAmount>0)
+                {
+                    double cost = (double)((double)ProductCost - (double)ProductCost * (ProductDiscountAmount / 100));
+                    return " " + string.Format("{0:C2}", cost);
+                }
+                else
+                {
+                    return "";
+                }
             }
         }
 
@@ -36,7 +53,29 @@ namespace ПишиСтирай
         {
             get
             {
-                return "\\pictures\\" + ProductPhoto;
+                if(ProductPhoto != null)
+                {
+                    return "\\pictures\\" + ProductPhoto;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
+        public SolidColorBrush Color
+        {
+            get
+            {
+                if(ProductDiscountAmount>15)
+                {
+                    return (SolidColorBrush)new BrushConverter().ConvertFrom("#7fff00"); 
+                }
+                else
+                {
+                    return Brushes.White;
+                }
             }
         }
     }
