@@ -20,10 +20,33 @@ namespace ПишиСтирай.pages
     /// </summary>
     public partial class PageTovar : Page
     {
+        List<Product> listFilter;
         public PageTovar()
         {
             InitializeComponent();
             lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
+            cmbSortCount.SelectedIndex = 0;
+            cmbSortDiscount.SelectedIndex = 0;
+        }
+
+        private void cmbSortCount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        private void tbSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Filter();
+        }
+
+        public void Filter() //метод для фильтрации данных
+        {
+            listFilter = new List<Product>();
+            if(!string.IsNullOrWhiteSpace(tbSearch.Text)) // поиск
+            {
+                listFilter = listFilter.Where(z => z.TitleProduct.TitleProductName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
+            }
+
         }
     }
 }
