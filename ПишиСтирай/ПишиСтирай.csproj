@@ -67,6 +67,8 @@
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="classes\ClassBase.cs" />
+    <Compile Include="classes\ClassFrame.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -86,6 +88,9 @@
     </Compile>
     <Compile Include="OrderStatus.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pages\PageAuto.xaml.cs">
+      <DependentUpon>PageAuto.xaml</DependentUpon>
     </Compile>
     <Compile Include="PickupPoint.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -120,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="pages\PageAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model1.Context.cs">
@@ -176,9 +185,23 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="pictures\A346R4.jpg" />
+    <Resource Include="pictures\A543T6.jpg" />
+    <Resource Include="pictures\B730E2.jpg" />
+    <Resource Include="pictures\D419T7.png" />
+    <Resource Include="pictures\F719R5.jpg" />
+    <Resource Include="pictures\G278R6.png" />
+    <Resource Include="pictures\H452A3.png" />
+    <Resource Include="pictures\R259E6.jpg" />
+    <Resource Include="pictures\T564P5.jpg" />
+    <Resource Include="pictures\А112Т4.jpg" />
+    <Resource Include="pictures\picture.png" />
+    <Resource Include="pictures\logo.png" />
+    <Resource Include="pictures\icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

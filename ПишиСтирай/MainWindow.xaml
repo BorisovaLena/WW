@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ПишиСтирай"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="OOO Пиши-Стирай" Height="450" Width="800"
+        Icon="pictures/icon.ico">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Image Source="pictures/logo.png" Width="100"/>
+            <TextBlock Text="ООО Пиши-Стирай"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Frame Name="frmMain" NavigationUIVisibility="Hidden"/>
+        </StackPanel>
     </Grid>
 </Window>

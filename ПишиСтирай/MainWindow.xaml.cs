@@ -23,6 +23,9 @@ namespace ПишиСтирай
         public MainWindow()
         {
             InitializeComponent();
+            classes.ClassFrame.mainFrame = frmMain;
+            classes.ClassBase.Base = new Entities();
+            classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto());
         }
     }
 }
