@@ -13,7 +13,7 @@ namespace ПишиСтирай
         {
             get
             {
-                return "Производитель: " + ProductManufacturer;
+                return "Производитель: " + Manufacturer.ManufacturerName;
             }
         }
 

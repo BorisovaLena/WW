@@ -19,19 +19,22 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged">
-                <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
-                <ComboBoxItem>По убыванию стоимости</ComboBoxItem>
-            </ComboBox>
-            <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged">
-                <ComboBoxItem>Все диапазоны</ComboBoxItem>
-                <ComboBoxItem>0-9,99%</ComboBoxItem>
-                <ComboBoxItem>10-14,99%</ComboBoxItem>
-                <ComboBoxItem>15% и более</ComboBoxItem>
-            </ComboBox>
-            <GroupBox Header="Поиск по названию">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                    <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
+                    <ComboBoxItem>По убыванию стоимости</ComboBoxItem>
+                </ComboBox>
+                <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                    <ComboBoxItem>Все диапазоны</ComboBoxItem>
+                    <ComboBoxItem>0-9,99%</ComboBoxItem>
+                    <ComboBoxItem>10-14,99%</ComboBoxItem>
+                    <ComboBoxItem>15% и более</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <GroupBox Header="Поиск" Width="520">
                 <TextBox Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
             </GroupBox>
+            <TextBlock Name="tbCountData"/>
         </StackPanel>
 
         <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="300">

@@ -41,12 +41,44 @@ namespace ПишиСтирай.pages
 
         public void Filter() //метод для фильтрации данных
         {
-            listFilter = new List<Product>();
-            if(!string.IsNullOrWhiteSpace(tbSearch.Text)) // поиск
+            listFilter = classes.ClassBase.Base.Product.ToList();
+            if(!string.IsNullOrWhiteSpace(tbSearch.Text)) // поиск по названию
             {
                 listFilter = listFilter.Where(z => z.TitleProduct.TitleProductName.ToLower().Contains(tbSearch.Text.ToLower())).ToList();
             }
+            switch(cmbSortCount.SelectedIndex) // фильтрация по стоимости
+            {
+                case 0:
+                    listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
+                    break;
+                case 1:
+                    listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
+                    listFilter.Reverse();
+                    break;
+            }
+            switch(cmbSortDiscount.SelectedIndex) // фильтрация по размеру скидки
+            {
+                case 1:
+                    listFilter = listFilter.Where(x => x.ProductDiscountAmount < 10).ToList();
+                    break;
+                case 2:
+                    listFilter = listFilter.Where(x => x.ProductDiscountAmount > 9.99 && x.ProductDiscountAmount<15 ).ToList();
+                    break;
+                case 3:
+                    listFilter = listFilter.Where(x => x.ProductDiscountAmount > 14.99).ToList();
+                    break;
+            }
 
+            lvTovar.ItemsSource = listFilter;
+            
+            int countNow = listFilter.Count;
+            int countProduct = classes.ClassBase.Base.Product.Count();
+            tbCountData.Text = countNow + " из " + countProduct;
+
+            if (listFilter.Count == 0)
+            {
+                MessageBox.Show("Ничего не найдено");
+            }
         }
     }
 }
