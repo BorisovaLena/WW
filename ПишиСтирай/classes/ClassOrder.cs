@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace ПишиСтирай
 {
@@ -56,6 +57,29 @@ namespace ПишиСтирай
                     summa += product.CostForOrder;
                 }
                 return "Стоимость заказа: "+string.Format("{0:C2}", summa);
+            }
+        }
+
+        public string SummaDiscount
+        {
+            get
+            {
+                double summa = 0;
+                List<OrderProduct> orderProducts = classes.ClassBase.Base.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
+                foreach (OrderProduct prod in orderProducts)
+                {
+                    Product product = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == prod.ProductArticleNumber);
+                    summa += product.DiscountForOrder;
+                }
+                return "Общая скидка: " + summa+"%";
+            }
+        }
+
+        public SolidColorBrush Color
+        {
+            get
+            {
+                if()
             }
         }
     }

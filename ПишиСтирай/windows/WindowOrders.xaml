@@ -36,8 +36,9 @@
                                     <TextBlock Text="{Binding OrderDeliveryDate, StringFormat={}dd.MM.yy}"/>
                                 </StackPanel>
                                 <TextBlock Text="{Binding OrPr}"/>
-                                <TextBlock Text="{Binding FOIClient}"/>
                                 <TextBlock Text="{Binding SummaOrder}"/>
+                                <TextBlock Text="{Binding SummaDiscount}"/>
+                                <TextBlock Text="{Binding FOIClient}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

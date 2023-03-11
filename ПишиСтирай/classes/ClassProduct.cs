@@ -66,6 +66,15 @@ namespace ПишиСтирай
             }
         }
 
+        public double DiscountForOrder
+        {
+            get
+            {
+                return (double)ProductDiscountAmount;
+            }
+        }
+
+
         public string Photo
         {
             get
