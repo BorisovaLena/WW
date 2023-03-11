@@ -70,14 +70,25 @@ namespace ПишиСтирай.pages
                 }
                 else
                 {
-                    classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar());
+                    if(userAuto.UserRole == 1)
+                    {
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(1));
+                    }
+                    else if(userAuto.UserRole == 2)
+                    {
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(2));
+                    }
+                    else if(userAuto.UserRole == 3)
+                    {
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(3));
+                    }            
                 }
             }
         }
 
         private void btnGuest_Click(object sender, RoutedEventArgs e)
         {
-            classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar());
+            classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(0));
         }
 
         public void generationChapcha() //генерация капчи

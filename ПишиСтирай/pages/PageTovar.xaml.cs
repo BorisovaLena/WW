@@ -21,9 +21,11 @@ namespace ПишиСтирай.pages
     public partial class PageTovar : Page
     {
         List<Product> listFilter;
-        public PageTovar()
+        int role;
+        public PageTovar(int role)
         {
             InitializeComponent();
+            this.role = role;
             lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
             cmbSortCount.SelectedIndex = 0;
             cmbSortDiscount.SelectedIndex = 0;
@@ -85,6 +87,14 @@ namespace ПишиСтирай.pages
         {
             windows.WindowOrders windowOrders = new windows.WindowOrders();
             windowOrders.ShowDialog();
+        }
+
+        private void btnOrders_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(role==2 || role==3)
+            {
+                btnOrders.Visibility = Visibility.Visible;
+            }
         }
     }
 }

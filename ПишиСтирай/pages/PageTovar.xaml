@@ -74,7 +74,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2">
-            <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы"/>
+            <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы" Visibility="Collapsed" Loaded="btnOrders_Loaded"/>
         </StackPanel>
 
     </Grid>
