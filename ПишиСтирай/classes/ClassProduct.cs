@@ -41,6 +41,23 @@ namespace ПишиСтирай
             }
         }
 
+        public double CostForOrder
+        {
+            get
+            {
+
+                if (ProductDiscountAmount > 0)
+                {
+                    double cost = (double)((double)ProductCost - (double)ProductCost * (ProductDiscountAmount / 100));
+                    return cost;
+                }
+                else
+                {
+                    return (double)ProductCost;
+                }
+            }
+        }
+
         public string Discount
         {
             get
@@ -77,6 +94,6 @@ namespace ПишиСтирай
                     return Brushes.White;
                 }
             }
-        }
+        } 
     }
 }
