@@ -8,6 +8,24 @@ namespace ПишиСтирай
 {
     public partial class Order
     {
-        
+        public string FOIClient
+        {
+            get
+            {
+                if(OrderClient!=null)
+                {
+                    return "Заказчик: " + OrderClient;
+                }
+                return null;
+            }
+        }
+
+        public string NumberOrder
+        {
+            get
+            {
+                return "Заказ " + OrderID;
+            }
+        }
     }
 }
