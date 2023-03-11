@@ -80,5 +80,11 @@ namespace ПишиСтирай.pages
                 MessageBox.Show("Ничего не найдено");
             }
         }
+
+        private void btnOrders_Click(object sender, RoutedEventArgs e)
+        {
+            windows.WindowOrders windowOrders = new windows.WindowOrders();
+            windowOrders.ShowDialog();
+        }
     }
 }

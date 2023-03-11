@@ -73,6 +73,9 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <StackPanel Grid.Row="2">
+            <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы"/>
+        </StackPanel>
 
     </Grid>
 </Page>

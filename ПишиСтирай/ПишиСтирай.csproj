@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="classes\ClassBase.cs" />
     <Compile Include="classes\ClassFrame.cs" />
+    <Compile Include="classes\ClassOrder.cs" />
     <Compile Include="classes\ClassProduct.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -117,6 +118,9 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\WindowOrders.xaml.cs">
+      <DependentUpon>WindowOrders.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\PageTovar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\WindowOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
