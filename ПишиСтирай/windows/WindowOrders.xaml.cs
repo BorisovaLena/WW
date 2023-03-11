@@ -23,6 +23,46 @@ namespace ПишиСтирай.windows
         {
             InitializeComponent();
             lvOrders.ItemsSource = classes.ClassBase.Base.Order.ToList();
+            cmbSortDiscount.SelectedIndex = 0;
+            cmbSortCount.SelectedIndex = 0;
+        }
+
+        public void Filter()
+        {
+            List<Order> listFilter = classes.ClassBase.Base.Order.ToList();
+            switch (cmbSortDiscount.SelectedIndex)
+            {
+                case 1:
+                    listFilter = listFilter.Where(x => x.SummaDiscountSort < 11).ToList();
+                    break;
+                case 2:
+                    listFilter = listFilter.Where(x => x.SummaDiscountSort > 10 && x.SummaDiscountSort < 15).ToList();
+                    break;
+                case 3:
+                    listFilter = listFilter.Where(x => x.SummaDiscountSort > 15).ToList();
+                    break;
+            }
+
+            switch(cmbSortCount.SelectedIndex)
+            {
+                case 0:
+                    listFilter.Sort((x,y)=> x.SummaOrder.CompareTo(y.SummaOrder));
+                    break;
+                case 1:
+                    listFilter.Sort((x, y) => x.SummaOrder.CompareTo(y.SummaOrder));
+                    listFilter.Reverse();
+                    break;
+            }
+            lvOrders.ItemsSource = listFilter;
+            if (listFilter.Count == 0)
+            {
+                MessageBox.Show("Ничего не найдено");
+            }
+        }
+
+        private void cmbSortCount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Filter();
         }
     }
 }
