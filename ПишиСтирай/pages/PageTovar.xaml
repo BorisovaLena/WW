@@ -49,7 +49,7 @@
                         <Grid Width="700" Background="{Binding Color}">
                             <Grid.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Добавить к заказу" Click="MenuItem_Click"/>
+                                    <MenuItem Header="Добавить к заказу" Click="MenuItem_Click" Uid="{Binding ProductArticleNumber}"/>
                                 </ContextMenu>
                             </Grid.ContextMenu>
                             <Grid.ColumnDefinitions>

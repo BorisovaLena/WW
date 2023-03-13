@@ -21,6 +21,7 @@ namespace ПишиСтирай.pages
     public partial class PageTovar : Page
     {
         List<Product> listFilter;
+        List<Product> OrderUser = new List<Product>();
         int role;
         public PageTovar(int role)
         {
@@ -125,12 +126,16 @@ namespace ПишиСтирай.pages
 
         private void btnShowOrder_Click(object sender, RoutedEventArgs e)
         {
-            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder();
+            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder(OrderUser);
             windowShowOrder.ShowDialog();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
+            MenuItem mi = (MenuItem)sender;
+            string index = mi.Uid;
+            Product prod = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == index);
+            OrderUser.Add(prod);
             btnShowOrder.Visibility = Visibility.Visible;
         }
     }
