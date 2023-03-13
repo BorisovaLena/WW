@@ -96,5 +96,31 @@ namespace ПишиСтирай.pages
                 btnOrders.Visibility = Visibility.Visible;
             }
         }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            switch (MessageBox.Show("Вы уверены, что хотите удалить?", "", MessageBoxButton.YesNo))
+            {
+                case MessageBoxResult.Yes:
+                    Button btn = (Button)sender;
+                    string index = btn.Uid;
+
+                    List<OrderProduct> products = classes.ClassBase.Base.OrderProduct.Where(z => z.ProductArticleNumber == index).ToList();
+                    if (products.Count == 0)
+                    {
+                        Product prod = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == index);
+                        classes.ClassBase.Base.Product.Remove(prod);
+                        classes.ClassBase.Base.SaveChanges();
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(role));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Удаление запрещено!!! ");
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

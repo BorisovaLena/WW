@@ -67,6 +67,7 @@
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Discount}"/>
+                                <Button Name="btnDelete" Content="Удалить" Click="btnDelete_Click" Uid="{Binding ProductArticleNumber}"/>
                             </StackPanel>
                         </Grid>
                     </Border>                

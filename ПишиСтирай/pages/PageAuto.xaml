@@ -14,10 +14,10 @@
             
             <StackPanel Width="200">
                 <GroupBox Header="Введите логин">
-                    <TextBox Name="tbLodin"/>
+                    <TextBox Name="tbLodin" Text="admin"/>
                 </GroupBox>
                 <GroupBox Header="Введите пароль">
-                    <PasswordBox Name="Password"/>
+                    <PasswordBox Name="Password" Password="admin"/>
                 </GroupBox>
                 <StackPanel Name="spCapcha" Width="150" Visibility="Collapsed">
                     <Canvas Name="can" Width="100" Height="50" Background="AliceBlue"></Canvas>
