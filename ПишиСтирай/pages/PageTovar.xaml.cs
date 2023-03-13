@@ -122,5 +122,16 @@ namespace ПишиСтирай.pages
                     break;
             }
         }
+
+        private void btnShowOrder_Click(object sender, RoutedEventArgs e)
+        {
+            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder();
+            windowShowOrder.ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            btnShowOrder.Visibility = Visibility.Visible;
+        }
     }
 }

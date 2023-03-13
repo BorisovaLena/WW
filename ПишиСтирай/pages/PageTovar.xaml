@@ -47,6 +47,11 @@
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderBrush="Black">
                         <Grid Width="700" Background="{Binding Color}">
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Добавить к заказу" Click="MenuItem_Click"/>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
@@ -76,6 +81,7 @@
         </ListView>
         <StackPanel Grid.Row="2">
             <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы" Visibility="Collapsed" Loaded="btnOrders_Loaded"/>
+            <Button Name="btnShowOrder" Click="btnShowOrder_Click" Content="Посмотреть заказ" Visibility="Collapsed"/>
         </StackPanel>
 
     </Grid>

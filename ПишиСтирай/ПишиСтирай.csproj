@@ -121,6 +121,9 @@
     <Compile Include="windows\WindowOrders.xaml.cs">
       <DependentUpon>WindowOrders.xaml</DependentUpon>
     </Compile>
+    <Compile Include="windows\WindowShowOrder.xaml.cs">
+      <DependentUpon>WindowShowOrder.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\WindowOrders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\WindowShowOrder.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
