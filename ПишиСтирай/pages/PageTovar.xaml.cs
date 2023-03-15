@@ -138,5 +138,14 @@ namespace ПишиСтирай.pages
             OrderUser.Add(prod);
             btnShowOrder.Visibility = Visibility.Visible;
         }
+
+        private void btnDelete_Loaded(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            if(role == 2 || role == 3)
+            {
+                btn.Visibility = Visibility.Visible;
+            }
+        }
     }
 }
