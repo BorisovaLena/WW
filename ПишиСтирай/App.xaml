@@ -6,17 +6,17 @@
     <Application.Resources>
 
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
 
         <Style TargetType="TextBox">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
 
         <Style TargetType="PasswordBox">
-            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontFamily" Value="Comic Sans MS"/>
         </Style>
 

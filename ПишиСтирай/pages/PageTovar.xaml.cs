@@ -142,10 +142,15 @@ namespace ПишиСтирай.pages
         private void btnDelete_Loaded(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            if(role == 2 || role == 3)
+            if(role == 2)
             {
                 btn.Visibility = Visibility.Visible;
             }
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto());
         }
     }
 }

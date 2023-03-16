@@ -19,6 +19,7 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
+            <Button Name="btnExit" Content="Выйти" Click="btnExit_Click" Template="{StaticResource btn}" Width="150" HorizontalAlignment="Right"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
                     <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
