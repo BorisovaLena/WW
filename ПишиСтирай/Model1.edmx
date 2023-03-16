@@ -12,12 +12,12 @@
           <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
-        <EntityType Name="Country">
+        <EntityType Name="City">
           <Key>
-            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="CityID" />
           </Key>
-          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CountryName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -182,11 +182,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PickupPoint_Country">
-          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="PickupPoint" Type="Self.PickupPoint" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryID" />
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
             </Principal>
             <Dependent Role="PickupPoint">
               <PropertyRef Name="PickupPointCountry" />
@@ -255,7 +255,7 @@
         </Association>
         <EntityContainer Name="Хранилище practic1ModelContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderProduct" EntityType="Self.OrderProduct" Schema="dbo" store:Type="Tables" />
@@ -288,7 +288,7 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK_PickupPoint_Country" Association="Self.FK_PickupPoint_Country">
-            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
             <End Role="PickupPoint" EntitySet="PickupPoint" />
           </AssociationSet>
           <AssociationSet Name="FK_PickupPoint_Street" Association="Self.FK_PickupPoint_Street">
@@ -318,7 +318,7 @@
       <Schema Namespace="practic1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="practic1Model.Category" />
-          <EntitySet Name="Country" EntityType="practic1Model.Country" />
+          <EntitySet Name="City" EntityType="practic1Model.City" />
           <EntitySet Name="Manufacturer" EntityType="practic1Model.Manufacturer" />
           <EntitySet Name="Order" EntityType="practic1Model.Order" />
           <EntitySet Name="OrderProduct" EntityType="practic1Model.OrderProduct" />
@@ -335,7 +335,7 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
           <AssociationSet Name="FK_PickupPoint_Country" Association="practic1Model.FK_PickupPoint_Country">
-            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
             <End Role="PickupPoint" EntitySet="PickupPoint" />
           </AssociationSet>
           <AssociationSet Name="FK_Product_Manufacturer" Association="practic1Model.FK_Product_Manufacturer">
@@ -383,13 +383,13 @@
           <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Product" Relationship="practic1Model.FK_Product_Category" FromRole="Category" ToRole="Product" />
         </EntityType>
-        <EntityType Name="Country">
+        <EntityType Name="City">
           <Key>
-            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="CityID" />
           </Key>
-          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PickupPoint" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="Country" ToRole="PickupPoint" />
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PickupPoint" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="City" ToRole="PickupPoint" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -442,7 +442,7 @@
           <Property Name="PickupPointCountry" Type="Int32" Nullable="false" />
           <Property Name="PickupPointStreet" Type="Int32" Nullable="false" />
           <Property Name="PickupPointHouse" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Country" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="PickupPoint" ToRole="Country" />
+          <NavigationProperty Name="City" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="PickupPoint" ToRole="City" />
           <NavigationProperty Name="Order" Relationship="practic1Model.FK_Order_PickupPoint" FromRole="PickupPoint" ToRole="Order" />
           <NavigationProperty Name="Street" Relationship="practic1Model.FK_PickupPoint_Street" FromRole="PickupPoint" ToRole="Street" />
         </EntityType>
@@ -526,11 +526,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PickupPoint_Country">
-          <End Type="practic1Model.Country" Role="Country" Multiplicity="1" />
+          <End Type="practic1Model.City" Role="City" Multiplicity="1" />
           <End Type="practic1Model.PickupPoint" Role="PickupPoint" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryID" />
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
             </Principal>
             <Dependent Role="PickupPoint">
               <PropertyRef Name="PickupPointCountry" />
@@ -659,11 +659,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="practic1Model.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="practic1Model.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

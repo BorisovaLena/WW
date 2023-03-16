@@ -26,7 +26,7 @@ namespace ПишиСтирай
         }
     
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderProduct> OrderProduct { get; set; }

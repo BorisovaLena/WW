@@ -27,44 +27,35 @@ namespace ПишиСтирай.windows
             this.products = products;
             int countOrders = classes.ClassBase.Base.Order.Count();
             tbNumberOrder.Text = "Заказ "+(countOrders + 1);
-            double summa = 0, discount = 0;
+            double summaEnd = 0, discount = 0, summaStart = 0;
             foreach(Product pr in products)
             {
-                summa += (double)pr.CostForOrder;
-                if(pr.ProductDiscountAmount!=null)
-                {
-                    discount += (double)pr.ProductDiscountAmount;
-                }
+                summaEnd += (double)pr.CostForOrder;
+                summaStart += (double)pr.ProductCost;
             }
+            discount = 100 - 100*summaEnd/summaStart;
             tbDiscount.Text = "Скидка: " + discount + "%";
-            tbSumma.Text = "Стоимость: " + string.Format("{0:C2}", summa);
+            tbSumma.Text = "Стоимость: " + string.Format("{0:C2}", summaEnd);
 
             List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList();
             cmbPickupPoint.Items.Add("Выберите пункт выдачи");
             foreach(PickupPoint pickup in pickupPoints)
             {
-                cmbPickupPoint.Items.Add(pickup.Country.CountryName + ", " + pickup.Street.StreetName + ", " + pickup.PickupPointHouse);
+                cmbPickupPoint.Items.Add(pickup.City.CityName + ", " + pickup.Street.StreetName + ", " + pickup.PickupPointHouse);
             }
             cmbPickupPoint.SelectedIndex = 0;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            switch (MessageBox.Show("Вы уверены, что хотите удалить?", "", MessageBoxButton.YesNo))
+            switch (MessageBox.Show("Вы уверены, что хотите удалить?", "Удаление", MessageBoxButton.YesNo))
             {
                 case MessageBoxResult.Yes:
                     Button btn = (Button)sender;
                     string index = btn.Uid;
                     Product product = products.FirstOrDefault(z => z.ProductArticleNumber == index);
                     products.Remove(product);
-                    if(products.Count==0)
-                    {
-                        Close();
-                    }
-                    else
-                    {
-                        //обновить окно
-                    }
+                    //обновить
                     break;
                 default:
                     break;

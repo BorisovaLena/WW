@@ -67,13 +67,13 @@
     <Compile Include="Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="classes\ClassBase.cs" />
     <Compile Include="classes\ClassFrame.cs" />
     <Compile Include="classes\ClassOrder.cs" />
     <Compile Include="classes\ClassProduct.cs" />
-    <Compile Include="Country.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Manufacturer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

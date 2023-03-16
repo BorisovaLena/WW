@@ -51,10 +51,10 @@ namespace ПишиСтирай.pages
             }
             switch(cmbSortCount.SelectedIndex) // фильтрация по стоимости
             {
-                case 0:
+                case 1:
                     listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
                     break;
-                case 1:
+                case 2:
                     listFilter.Sort((x, y) => x.ProductCost.CompareTo(y.ProductCost));
                     listFilter.Reverse();
                     break;
@@ -142,7 +142,7 @@ namespace ПишиСтирай.pages
         private void btnDelete_Loaded(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
-            if(role == 2)
+            if(role == 2 || role==3)
             {
                 btn.Visibility = Visibility.Visible;
             }

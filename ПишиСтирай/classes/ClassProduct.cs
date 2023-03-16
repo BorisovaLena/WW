@@ -94,7 +94,7 @@ namespace ПишиСтирай
         {
             get
             {
-                if(ProductDiscountAmount>15)
+                if(ProductDiscountAmount!=0)
                 {
                     return (SolidColorBrush)new BrushConverter().ConvertFrom("#7fff00"); 
                 }

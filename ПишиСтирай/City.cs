@@ -12,16 +12,16 @@ namespace ПишиСтирай
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class City
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Country()
+        public City()
         {
             this.PickupPoint = new HashSet<PickupPoint>();
         }
     
-        public int CountryID { get; set; }
-        public string CountryName { get; set; }
+        public int CityID { get; set; }
+        public string CityName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PickupPoint> PickupPoint { get; set; }
