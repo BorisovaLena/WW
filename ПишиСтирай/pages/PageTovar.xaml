@@ -73,7 +73,7 @@
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Discount}"/>
-                                <Button Name="btnDelete" Visibility="Collapsed" Content="Удалить" Click="btnDelete_Click" Uid="{Binding ProductArticleNumber}" Loaded="btnDelete_Loaded" Template="{StaticResource btn}"/>
+                                <Button Name="btnDelete" Visibility="Collapsed" Content="Удалить" Width="100" Click="btnDelete_Click" Uid="{Binding ProductArticleNumber}" Loaded="btnDelete_Loaded" Template="{StaticResource btn}"/>
                             </StackPanel>
                         </Grid>
                     </Border>                
