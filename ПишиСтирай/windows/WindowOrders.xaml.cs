@@ -45,10 +45,10 @@ namespace ПишиСтирай.windows
 
             switch(cmbSortCount.SelectedIndex)
             {
-                case 0:
+                case 1:
                     listFilter.Sort((x,y)=> x.SummaOrder.CompareTo(y.SummaOrder));
                     break;
-                case 1:
+                case 2:
                     listFilter.Sort((x, y) => x.SummaOrder.CompareTo(y.SummaOrder));
                     listFilter.Reverse();
                     break;

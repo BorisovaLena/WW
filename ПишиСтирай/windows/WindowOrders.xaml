@@ -5,21 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ПишиСтирай.windows"
         mc:Ignorable="d"
-        MinHeight="450" MinWidth="800"
-        Title="Заказы" Height="450" Width="800">
+        MinHeight="600" MinWidth="800"
+        Icon="/pictures/icon.ico"
+        Title="OOO Пиши-Стирай" Height="600" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <TextBlock Text="Заказы"/>
+            <TextBlock Text="Заказы" Style="{StaticResource TBZag}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
+                    <ComboBoxItem>Сортировка по стоимости</ComboBoxItem>
                     <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
                     <ComboBoxItem>По убыванию стоимости</ComboBoxItem>
                 </ComboBox>
-                <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
                     <ComboBoxItem>Все диапазоны</ComboBoxItem>
                     <ComboBoxItem>0-9,99%</ComboBoxItem>
                     <ComboBoxItem>10-14,99%</ComboBoxItem>
@@ -27,7 +29,7 @@
                 </ComboBox>
             </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1" Name="lvOrders" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="300">
+        <ListView Grid.Row="1" Name="lvOrders" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="450">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>

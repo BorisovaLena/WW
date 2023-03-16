@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ПишиСтирай.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="660" d:DesignWidth="800"
       Title="PageTovar">
 
     <Page.Resources>
@@ -14,30 +14,30 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
                     <ComboBoxItem>По возрастанию стоимости</ComboBoxItem>
                     <ComboBoxItem>По убыванию стоимости</ComboBoxItem>
                 </ComboBox>
-                <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged" Width="250" Margin="5">
+                <ComboBox Name="cmbSortDiscount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
                     <ComboBoxItem>Все диапазоны</ComboBoxItem>
                     <ComboBoxItem>0-9,99%</ComboBoxItem>
                     <ComboBoxItem>10-14,99%</ComboBoxItem>
                     <ComboBoxItem>15% и более</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <GroupBox Header="Поиск" Width="520">
+            <GroupBox Header="Поиск" Width="610">
                 <TextBox Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
             </GroupBox>
             <TextBlock Name="tbCountData"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="300">
+        <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="400">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>
@@ -72,7 +72,7 @@
                             </StackPanel>
                             <StackPanel Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <TextBlock Text="{Binding Discount}"/>
-                                <Button Name="btnDelete" Visibility="Collapsed" Content="Удалить" Click="btnDelete_Click" Uid="{Binding ProductArticleNumber}" Loaded="btnDelete_Loaded"/>
+                                <Button Name="btnDelete" Visibility="Collapsed" Content="Удалить" Click="btnDelete_Click" Uid="{Binding ProductArticleNumber}" Loaded="btnDelete_Loaded" Template="{StaticResource btn}"/>
                             </StackPanel>
                         </Grid>
                     </Border>                
@@ -80,8 +80,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="2">
-            <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы" Visibility="Collapsed" Loaded="btnOrders_Loaded"/>
-            <Button Name="btnShowOrder" Click="btnShowOrder_Click" Content="Посмотреть заказ" Visibility="Collapsed"/>
+            <Button Name="btnOrders" Click="btnOrders_Click" Content="Заказы" Visibility="Collapsed" Loaded="btnOrders_Loaded" Template="{StaticResource btn}" Width="600"/>
+            <Button Name="btnShowOrder" Click="btnShowOrder_Click" Content="Посмотреть заказ" Visibility="Collapsed" Template="{StaticResource btn}" Width="600"/>
         </StackPanel>
 
     </Grid>
