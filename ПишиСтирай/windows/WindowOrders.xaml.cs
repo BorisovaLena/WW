@@ -64,5 +64,13 @@ namespace ПишиСтирай.windows
         {
             Filter();
         }
+
+        private void btnStatus_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Order order = classes.ClassBase.Base.Order.FirstOrDefault(z => z.OrderID == index);
+
+        }
     }
 }

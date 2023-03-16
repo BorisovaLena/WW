@@ -39,7 +39,11 @@
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderBrush="Black" Background="{Binding ColorOrder}">
                         <Grid Width="700">
-                            <StackPanel>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
                                 <TextBlock Text="{Binding NumberOrder}"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Дата заказа: "/>
@@ -49,10 +53,14 @@
                                     <TextBlock Text="Дата доставки: "/>
                                     <TextBlock Text="{Binding OrderDeliveryDate, StringFormat={}dd.MM.yy}"/>
                                 </StackPanel>
-                                <TextBlock Text="{Binding OrPr}"/>
+                                <TextBlock Text="{Binding OrPr}" TextWrapping="Wrap"/>
                                 <TextBlock Text="{Binding SummaOrderPrint}"/>
                                 <TextBlock Text="{Binding SummaDiscount}"/>
                                 <TextBlock Text="{Binding FOIClient}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Button Name="btnStatus" Uid="{Binding OrderID}" Content="Изменить статус" Template="{StaticResource btn}" Click="btnStatus_Click"/>
+                                <Button Name="btnDate" Uid="{Binding OrderID}" Content="Изменить дату доставки" Template="{StaticResource btn}"/>
                             </StackPanel>
                         </Grid>
                     </Border>

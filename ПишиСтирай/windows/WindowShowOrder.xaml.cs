@@ -53,6 +53,7 @@ namespace ПишиСтирай.windows
                     string index = btn.Uid;
                     Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
                     classes.ClassBase.ProductsUser.Remove(product);
+                    lvProduct.Items.Refresh();
                     break;
                 default:
                     break;
@@ -61,7 +62,16 @@ namespace ПишиСтирай.windows
 
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //при 0 удалить продукт
+            TextBox tb = (TextBox)sender;
+            string index = tb.Uid;
+            
+            if (tb.Text=="0") 
+            {
+                Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
+                classes.ClassBase.ProductsUser.Remove(product);
+                lvProduct.Items.Refresh();
+            }
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
