@@ -19,16 +19,14 @@ namespace ПишиСтирай.windows
     /// </summary>
     public partial class WindowShowOrder : Window
     {
-        List<Product> products;
-        public WindowShowOrder(List<Product> products)
+        public WindowShowOrder()
         {
             InitializeComponent();
-            lvProduct.ItemsSource = products;
-            this.products = products;
+            lvProduct.ItemsSource = classes.ClassBase.ProductsUser;
             int countOrders = classes.ClassBase.Base.Order.Count();
             tbNumberOrder.Text = "Заказ "+(countOrders + 1);
             double summaEnd = 0, discount = 0, summaStart = 0;
-            foreach(Product pr in products)
+            foreach(Product pr in classes.ClassBase.ProductsUser)
             {
                 summaEnd += (double)pr.CostForOrder;
                 summaStart += (double)pr.ProductCost;
@@ -53,9 +51,8 @@ namespace ПишиСтирай.windows
                 case MessageBoxResult.Yes:
                     Button btn = (Button)sender;
                     string index = btn.Uid;
-                    Product product = products.FirstOrDefault(z => z.ProductArticleNumber == index);
-                    products.Remove(product);
-                    //обновить
+                    Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
+                    classes.ClassBase.ProductsUser.Remove(product);
                     break;
                 default:
                     break;

@@ -9,5 +9,6 @@ namespace ПишиСтирай.classes
     internal class ClassBase
     {
         public static Entities Base;
+        public static List<Product> ProductsUser= new List<Product>();
     }
 }

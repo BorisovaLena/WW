@@ -21,7 +21,6 @@ namespace ПишиСтирай.pages
     public partial class PageTovar : Page
     {
         List<Product> listFilter;
-        List<Product> OrderUser = new List<Product>();
         int role;
         public PageTovar(int role)
         {
@@ -30,6 +29,16 @@ namespace ПишиСтирай.pages
             lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
             cmbSortCount.SelectedIndex = 0;
             cmbSortDiscount.SelectedIndex = 0;
+        }
+
+        public PageTovar(List<Product> products, int role)
+        {
+            InitializeComponent();
+            this.role = role;
+            lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
+            cmbSortCount.SelectedIndex = 0;
+            cmbSortDiscount.SelectedIndex = 0;
+            classes.ClassBase.ProductsUser = products;
         }
 
         private void cmbSortCount_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -126,8 +135,12 @@ namespace ПишиСтирай.pages
 
         private void btnShowOrder_Click(object sender, RoutedEventArgs e)
         {
-            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder(OrderUser);
+            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder();
             windowShowOrder.ShowDialog();
+            if(classes.ClassBase.ProductsUser.Count==0)
+            {
+                btnShowOrder.Visibility= Visibility.Collapsed;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
@@ -135,7 +148,7 @@ namespace ПишиСтирай.pages
             MenuItem mi = (MenuItem)sender;
             string index = mi.Uid;
             Product prod = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == index);
-            OrderUser.Add(prod);
+            classes.ClassBase.ProductsUser.Add(prod);
             btnShowOrder.Visibility = Visibility.Visible;
         }
 
