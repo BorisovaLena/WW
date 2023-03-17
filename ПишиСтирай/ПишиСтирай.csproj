@@ -118,11 +118,17 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="windows\WindowDate.xaml.cs">
+      <DependentUpon>WindowDate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="windows\WindowOrders.xaml.cs">
       <DependentUpon>WindowOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="windows\WindowShowOrder.xaml.cs">
       <DependentUpon>WindowShowOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\WindowStatus.xaml.cs">
+      <DependentUpon>WindowStatus.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -144,11 +150,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="windows\WindowDate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="windows\WindowOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="windows\WindowShowOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\WindowStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

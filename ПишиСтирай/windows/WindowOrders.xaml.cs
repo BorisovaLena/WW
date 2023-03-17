@@ -70,12 +70,19 @@ namespace ПишиСтирай.windows
             Button btn = (Button)sender;
             int index = Convert.ToInt32(btn.Uid);
             Order order = classes.ClassBase.Base.Order.FirstOrDefault(z => z.OrderID == index);
-
+            WindowStatus window = new WindowStatus(order);
+            window.ShowDialog();
+            lvOrders.Items.Refresh();
         }
 
         private void btnDate_Click(object sender, RoutedEventArgs e)
         {
-
+            Button btn = (Button)sender;
+            int index = Convert.ToInt32(btn.Uid);
+            Order order = classes.ClassBase.Base.Order.FirstOrDefault(z => z.OrderID == index);
+            WindowDate window = new WindowDate(order);
+            window.ShowDialog();
+            lvOrders.Items.Refresh();
         }
     }
 }
