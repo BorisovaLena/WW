@@ -37,6 +37,7 @@ namespace ПишиСтирай
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Street> Street { get; set; }
         public virtual DbSet<TitleProduct> TitleProduct { get; set; }
+        public virtual DbSet<Units> Units { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

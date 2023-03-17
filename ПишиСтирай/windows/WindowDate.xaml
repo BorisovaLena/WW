@@ -10,7 +10,7 @@
     <Grid>
         <StackPanel Width="300" HorizontalAlignment="Center">
             <TextBlock Text="Выберите дату"/>
-            <DatePicker Name="dpDate"/>
+            <DatePicker Name="dpDate" FontSize="18" FontFamily="Comic Sans MS"/>
             <Button Name="btnSave" Content="Сохранить" Template="{StaticResource btn}" Click="btnSave_Click"/>
         </StackPanel>
         
