@@ -24,6 +24,7 @@ namespace ПишиСтирай.pages
         string str="";
         DispatcherTimer dispatcher = new DispatcherTimer();
         int sec = 10;
+        User user;
         public PageAuto()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace ПишиСтирай.pages
             else
             {
                 User userAuto = classes.ClassBase.Base.User.FirstOrDefault(z => z.UserLogin == tbLodin.Text && z.UserPassword == Password.Password);
+                user = userAuto;
                 if(userAuto == null)
                 {
                     MessageBox.Show("Вы ввели неверные данные!!!");
@@ -72,15 +74,15 @@ namespace ПишиСтирай.pages
                 {
                     if(userAuto.UserRole == 1)
                     {
-                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(1));
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(1, userAuto));
                     }
                     else if(userAuto.UserRole == 2)
                     {
-                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(2));
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(2, userAuto));
                     }
                     else if(userAuto.UserRole == 3)
                     {
-                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(3));
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(3, userAuto));
                     }            
                 }
             }
@@ -88,7 +90,7 @@ namespace ПишиСтирай.pages
 
         private void btnGuest_Click(object sender, RoutedEventArgs e)
         {
-            classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(0));
+            classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(0, user));
         }
 
         public void generationChapcha() //генерация капчи

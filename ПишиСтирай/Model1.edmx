@@ -35,7 +35,7 @@
           <Property Name="OrderDeliveryDate" Type="datetime" Nullable="false" />
           <Property Name="OrderPickupPoint" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="OrderClient" Type="nvarchar(max)" />
+          <Property Name="OrderClient" Type="int" />
           <Property Name="OrderCode" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderProduct">
@@ -60,7 +60,7 @@
           </Key>
           <Property Name="PickupPointID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PickupPointIndex" Type="int" Nullable="false" />
-          <Property Name="PickupPointCountry" Type="int" Nullable="false" />
+          <Property Name="PickupPointCity" Type="int" Nullable="false" />
           <Property Name="PickupPointStreet" Type="int" Nullable="false" />
           <Property Name="PickupPointHouse" Type="nvarchar" MaxLength="10" />
         </EntityType>
@@ -181,7 +181,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PickupPoint_Country">
+        <Association Name="FK_Order_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PickupPoint_City">
           <End Role="City" Type="Self.City" Multiplicity="1" />
           <End Role="PickupPoint" Type="Self.PickupPoint" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +201,7 @@
               <PropertyRef Name="CityID" />
             </Principal>
             <Dependent Role="PickupPoint">
-              <PropertyRef Name="PickupPointCountry" />
+              <PropertyRef Name="PickupPointCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -287,7 +299,11 @@
             <End Role="PickupPoint" EntitySet="PickupPoint" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_PickupPoint_Country" Association="Self.FK_PickupPoint_Country">
+          <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PickupPoint_City" Association="Self.FK_PickupPoint_City">
             <End Role="City" EntitySet="City" />
             <End Role="PickupPoint" EntitySet="PickupPoint" />
           </AssociationSet>
@@ -334,7 +350,7 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
-          <AssociationSet Name="FK_PickupPoint_Country" Association="practic1Model.FK_PickupPoint_Country">
+          <AssociationSet Name="FK_PickupPoint_City" Association="practic1Model.FK_PickupPoint_City">
             <End Role="City" EntitySet="City" />
             <End Role="PickupPoint" EntitySet="PickupPoint" />
           </AssociationSet>
@@ -352,6 +368,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Order_PickupPoint" Association="practic1Model.FK_Order_PickupPoint">
             <End Role="PickupPoint" EntitySet="PickupPoint" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_User" Association="practic1Model.FK_Order_User">
+            <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="FK__OrderProd__Produ__412EB0B6" Association="practic1Model.FK__OrderProd__Produ__412EB0B6">
@@ -389,7 +409,7 @@
           </Key>
           <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PickupPoint" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="City" ToRole="PickupPoint" />
+          <NavigationProperty Name="PickupPoint" Relationship="practic1Model.FK_PickupPoint_City" FromRole="City" ToRole="PickupPoint" />
         </EntityType>
         <EntityType Name="Manufacturer">
           <Key>
@@ -408,11 +428,12 @@
           <Property Name="OrderDeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="OrderPickupPoint" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OrderClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderClient" Type="Int32" />
           <Property Name="OrderCode" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OrderProduct" Relationship="practic1Model.FK__OrderProd__Order__403A8C7D" FromRole="Order" ToRole="OrderProduct" />
           <NavigationProperty Name="OrderStatus1" Relationship="practic1Model.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
           <NavigationProperty Name="PickupPoint" Relationship="practic1Model.FK_Order_PickupPoint" FromRole="Order" ToRole="PickupPoint" />
+          <NavigationProperty Name="User" Relationship="practic1Model.FK_Order_User" FromRole="Order" ToRole="User" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
@@ -439,10 +460,10 @@
           </Key>
           <Property Name="PickupPointID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PickupPointIndex" Type="Int32" Nullable="false" />
-          <Property Name="PickupPointCountry" Type="Int32" Nullable="false" />
+          <Property Name="PickupPointCity" Type="Int32" Nullable="false" />
           <Property Name="PickupPointStreet" Type="Int32" Nullable="false" />
           <Property Name="PickupPointHouse" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="City" Relationship="practic1Model.FK_PickupPoint_Country" FromRole="PickupPoint" ToRole="City" />
+          <NavigationProperty Name="City" Relationship="practic1Model.FK_PickupPoint_City" FromRole="PickupPoint" ToRole="City" />
           <NavigationProperty Name="Order" Relationship="practic1Model.FK_Order_PickupPoint" FromRole="PickupPoint" ToRole="Order" />
           <NavigationProperty Name="Street" Relationship="practic1Model.FK_PickupPoint_Street" FromRole="PickupPoint" ToRole="Street" />
         </EntityType>
@@ -511,6 +532,7 @@
           <Property Name="UserLogin" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order" Relationship="practic1Model.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="practic1Model.FK__User__UserRole__398D8EEE" FromRole="User" ToRole="Role" />
         </EntityType>
         <Association Name="FK_Product_Category">
@@ -525,7 +547,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PickupPoint_Country">
+        <Association Name="FK_PickupPoint_City">
           <End Type="practic1Model.City" Role="City" Multiplicity="1" />
           <End Type="practic1Model.PickupPoint" Role="PickupPoint" Multiplicity="*" />
           <ReferentialConstraint>
@@ -533,7 +555,7 @@
               <PropertyRef Name="CityID" />
             </Principal>
             <Dependent Role="PickupPoint">
-              <PropertyRef Name="PickupPointCountry" />
+              <PropertyRef Name="PickupPointCity" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -582,6 +604,18 @@
             </Principal>
             <Dependent Role="Order">
               <PropertyRef Name="OrderPickupPoint" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_User">
+          <End Type="practic1Model.User" Role="User" Multiplicity="0..1" />
+          <End Type="practic1Model.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="OrderClient" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -711,7 +745,7 @@
               <MappingFragment StoreEntitySet="PickupPoint">
                 <ScalarProperty Name="PickupPointHouse" ColumnName="PickupPointHouse" />
                 <ScalarProperty Name="PickupPointStreet" ColumnName="PickupPointStreet" />
-                <ScalarProperty Name="PickupPointCountry" ColumnName="PickupPointCountry" />
+                <ScalarProperty Name="PickupPointCity" ColumnName="PickupPointCity" />
                 <ScalarProperty Name="PickupPointIndex" ColumnName="PickupPointIndex" />
                 <ScalarProperty Name="PickupPointID" ColumnName="PickupPointID" />
               </MappingFragment>

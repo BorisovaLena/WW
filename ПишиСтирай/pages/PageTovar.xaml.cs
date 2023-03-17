@@ -22,10 +22,12 @@ namespace ПишиСтирай.pages
     {
         List<Product> listFilter;
         int role;
-        public PageTovar(int role)
+        User user;
+        public PageTovar(int role, User user)
         {
             InitializeComponent();
             this.role = role;
+            this.user = user;
             lvTovar.ItemsSource = classes.ClassBase.Base.Product.ToList();
             cmbSortCount.SelectedIndex = 0;
             cmbSortDiscount.SelectedIndex = 0;
@@ -121,7 +123,7 @@ namespace ПишиСтирай.pages
                         Product prod = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == index);
                         classes.ClassBase.Base.Product.Remove(prod);
                         classes.ClassBase.Base.SaveChanges();
-                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(role));
+                        classes.ClassFrame.mainFrame.Navigate(new pages.PageTovar(role, user));
                     }
                     else
                     {
@@ -135,7 +137,7 @@ namespace ПишиСтирай.pages
 
         private void btnShowOrder_Click(object sender, RoutedEventArgs e)
         {
-            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder();
+            windows.WindowShowOrder windowShowOrder = new windows.WindowShowOrder(user);
             windowShowOrder.ShowDialog();
             if(classes.ClassBase.ProductsUser.Count==0)
             {

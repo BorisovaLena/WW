@@ -19,9 +19,11 @@ namespace ПишиСтирай.windows
     /// </summary>
     public partial class WindowShowOrder : Window
     {
-        public WindowShowOrder()
+        User user;
+        public WindowShowOrder(User user)
         {
             InitializeComponent();
+            this.user = user;
             lvProduct.ItemsSource = classes.ClassBase.ProductsUser;
             int countOrders = classes.ClassBase.Base.Order.Count();
             tbNumberOrder.Text = "Заказ "+(countOrders + 1);
@@ -42,6 +44,11 @@ namespace ПишиСтирай.windows
                 cmbPickupPoint.Items.Add(pickup.City.CityName + ", " + pickup.Street.StreetName + ", " + pickup.PickupPointHouse);
             }
             cmbPickupPoint.SelectedIndex = 0;
+            if(user!=null)
+            {
+                tbFIO.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
+            }
+            
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -75,7 +82,39 @@ namespace ПишиСтирай.windows
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList(); //получаю выбранный пункт выдачи
+            int PP = cmbPickupPoint.SelectedIndex;
 
+            Random random = new Random();
+
+            bool morethree = true;
+            DateTime dateDelivery;
+            foreach (Product product in classes.ClassBase.ProductsUser)
+            {
+                if(product.ProductQuantityInStock<3)
+                {
+                    morethree = false;
+                }
+            }
+            if(morethree==false)
+            {
+                dateDelivery = DateTime.Now.AddDays(6);
+            }
+            else
+            {
+                dateDelivery = DateTime.Now.AddDays(3);
+            }
+            Order order = new Order()
+            {
+                OrderStatus = 1,
+                OrderDeliveryDate = dateDelivery,
+                OrderPickupPoint = PP,
+                OrderDate = DateTime.Now,
+                OrderClient = user.UserID,
+                OrderCode = random.Next(100,1000),
+            };
+
+            foreach (Product product in classes.ClassBase.ProductsUser)
         }
     }
 }

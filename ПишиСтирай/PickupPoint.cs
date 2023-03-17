@@ -22,7 +22,7 @@ namespace ПишиСтирай
     
         public int PickupPointID { get; set; }
         public int PickupPointIndex { get; set; }
-        public int PickupPointCountry { get; set; }
+        public int PickupPointCity { get; set; }
         public int PickupPointStreet { get; set; }
         public string PickupPointHouse { get; set; }
     

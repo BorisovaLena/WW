@@ -21,7 +21,11 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBlock Text="Корзина" Style="{StaticResource TBZag}"/>
-            <TextBlock Name="tbNumberOrder"/>
+            <TextBlock Name="tbNumberOrder" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Заказчик: "/>
+                <TextBlock Name="tbFIO"/>
+            </StackPanel>
             <ComboBox Name="cmbPickupPoint" Width="300"/>
         </StackPanel>
         <ListView Grid.Row="1" Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="450">
