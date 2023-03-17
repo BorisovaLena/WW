@@ -32,15 +32,7 @@ namespace ПишиСтирай.windows
                 count = order.OrderID;
             }
             tbNumberOrder.Text = "Заказ "+(count + 1);
-            double summaEnd = 0, discount, summaStart = 0;
-            foreach(Product pr in classes.ClassBase.ProductsUser)
-            {
-                summaEnd += (double)pr.CostForOrder;
-                summaStart += (double)pr.ProductCost;
-            }
-            discount = 100 - 100*summaEnd/summaStart;
-            tbDiscount.Text = "Скидка: " + discount + "%";
-            tbSumma.Text = "Стоимость: " + string.Format("{0:C2}", summaEnd);
+            CalculationSumma();
 
             List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList();
             cmbPickupPoint.Items.Add("Выберите пункт выдачи");
@@ -57,7 +49,19 @@ namespace ПишиСтирай.windows
             {
                 tbFIO.Text = "Гость";
             }
-            
+        }
+
+        public void CalculationSumma() //подсчет стоимости и скидки выбранных товаров
+        {
+            double summaEnd = 0, discount, summaStart = 0;
+            foreach (Product pr in classes.ClassBase.ProductsUser)
+            {
+                summaEnd += (double)pr.CostForOrder;
+                summaStart += (double)pr.ProductCost;
+            }
+            discount = 100 - 100 * summaEnd / summaStart;
+            tbDiscount.Text = "Скидка: " + discount + "%";
+            tbSumma.Text = "Стоимость: " + string.Format("{0:C2}", summaEnd);
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -69,7 +73,15 @@ namespace ПишиСтирай.windows
                     string index = btn.Uid;
                     Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
                     classes.ClassBase.ProductsUser.Remove(product);
-                    lvProduct.Items.Refresh();
+                    if (classes.ClassBase.ProductsUser.Count == 0)
+                    {
+                        Close();
+                    }
+                    else
+                    {
+                        lvProduct.Items.Refresh();
+                        CalculationSumma();
+                    }
                     break;
                 default:
                     break;
@@ -79,14 +91,29 @@ namespace ПишиСтирай.windows
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            string index = tb.Uid;       
-            if (tb.Text=="0") 
+            string index = tb.Uid;
+            if (tb.Text == "0")
             {
-                Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
-                classes.ClassBase.ProductsUser.Remove(product);
-                lvProduct.Items.Refresh();
+                switch (MessageBox.Show("Вы уверены, что хотите удалить?", "Удаление", MessageBoxButton.YesNo))
+                {
+                    case MessageBoxResult.Yes:
+                        Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
+                        classes.ClassBase.ProductsUser.Remove(product);
+                        if(classes.ClassBase.ProductsUser.Count==0)
+                        {
+                            Close();
+                        }
+                        else
+                        {
+                            lvProduct.Items.Refresh();
+                            CalculationSumma();
+                        }
+                        break;
+                    default:
+                        break;
+                }
             }
-
+                
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
