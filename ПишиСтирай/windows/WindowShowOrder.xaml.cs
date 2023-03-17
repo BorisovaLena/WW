@@ -155,6 +155,7 @@ namespace ПишиСтирай.windows
 
                     foreach (Product product in classes.ClassBase.ProductsUser) //создаю новые элементы таблицы OrderProduct
                     {
+                        
                         OrderProduct orderProduct = new OrderProduct()
                         {
                             OrderID = order.OrderID,
@@ -175,6 +176,14 @@ namespace ПишиСтирай.windows
             catch
             {
                 MessageBox.Show("Ошибочка!!!");
+            }
+        }
+
+        private void tbCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
             }
         }
     }
