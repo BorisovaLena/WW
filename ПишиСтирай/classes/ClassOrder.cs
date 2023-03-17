@@ -79,14 +79,18 @@ namespace ПишиСтирай
         {
             get
             {
-                double summa = 0;
+                double discount = 0;
+                double summaOld = 0;
+                double summaNew = 0;
                 List<OrderProduct> orderProducts = classes.ClassBase.Base.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
                 foreach (OrderProduct prod in orderProducts)
                 {
                     Product product = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == prod.ProductArticleNumber);
-                    summa += product.DiscountForOrder;
+                    summaOld += (double)product.ProductCost;
+                    summaNew += product.CostForOrder;
                 }
-                return "Общая скидка: " + summa+"%";
+                discount = 100 - 100 * summaNew / summaOld;
+                return "Общая скидка: " + discount + "%";
             }
         }
 
@@ -94,14 +98,18 @@ namespace ПишиСтирай
         {
             get
             {
-                double summa = 0;
+                double discount = 0;
+                double summaOld = 0;
+                double summaNew = 0;
                 List<OrderProduct> orderProducts = classes.ClassBase.Base.OrderProduct.Where(x => x.OrderID == OrderID).ToList();
                 foreach (OrderProduct prod in orderProducts)
                 {
                     Product product = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == prod.ProductArticleNumber);
-                    summa += product.DiscountForOrder;
+                    summaOld += (double)product.ProductCost;
+                    summaNew += product.CostForOrder;
                 }
-                return summa;
+                discount = 100 - 100 * summaNew / summaOld;
+                return discount;
             }
         }
 
