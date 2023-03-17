@@ -166,6 +166,7 @@ namespace ПишиСтирай.windows
                     }
                     classes.ClassBase.Base.SaveChanges();
                     MessageBox.Show("Успешное оформление заказа!!!");
+                    Close();
                 }
                 else
                 {
