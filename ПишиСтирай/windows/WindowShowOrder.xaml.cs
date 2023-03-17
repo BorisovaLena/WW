@@ -25,9 +25,14 @@ namespace ПишиСтирай.windows
             InitializeComponent();
             this.user = user;
             lvProduct.ItemsSource = classes.ClassBase.ProductsUser;
-            int countOrders = classes.ClassBase.Base.Order.Count();
-            tbNumberOrder.Text = "Заказ "+(countOrders + 1);
-            double summaEnd = 0, discount = 0, summaStart = 0;
+            List<Order> countOrders = classes.ClassBase.Base.Order.ToList();
+            int count = 0;
+            foreach(Order order in countOrders)
+            {
+                count = order.OrderID;
+            }
+            tbNumberOrder.Text = "Заказ "+(count + 1);
+            double summaEnd = 0, discount, summaStart = 0;
             foreach(Product pr in classes.ClassBase.ProductsUser)
             {
                 summaEnd += (double)pr.CostForOrder;
@@ -115,7 +120,7 @@ namespace ПишиСтирай.windows
                     order.OrderDate = DateTime.Now;
                     if (user != null)
                     {
-                        order.OrderID = user.UserID;
+                        order.OrderClient = user.UserID;
                     }
                     order.OrderCode = random.Next(100, 1000); //генерация кода
 

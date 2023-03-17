@@ -38,10 +38,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderBrush="Black" Background="{Binding ColorOrder}">
-                        <Grid Width="700">
+                        <Grid Width="740">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5*"/>
-                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{Binding NumberOrder}"/>

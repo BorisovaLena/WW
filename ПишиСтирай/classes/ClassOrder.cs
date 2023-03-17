@@ -15,7 +15,7 @@ namespace ПишиСтирай
             {
                 if(OrderClient!=null)
                 {
-                    return "Заказчик: " + OrderClient;
+                    return "Заказчик: " + User.UserSurname+ " "+ User.UserName+ " "+ User.UserPatronymic;
                 }
                 return null;
             }
