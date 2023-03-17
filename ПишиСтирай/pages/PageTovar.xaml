@@ -39,7 +39,6 @@
             </GroupBox>
             <TextBlock Name="tbCountData"/>
         </StackPanel>
-
         <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" Height="380">
             <ListView.ItemTemplate>
                 <DataTemplate>
