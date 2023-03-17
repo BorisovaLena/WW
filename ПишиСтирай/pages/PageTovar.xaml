@@ -63,7 +63,7 @@
                                 <TextBlock Text="{Binding ManufacturerString}"/>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Цена: "/>
-                                    <TextBlock Text="{Binding CostOld}" TextDecorations="Strikethrough"/>
+                                    <TextBlock Text="{Binding CostOld}" Name="tbCostOld" Loaded="tbCostOld_Loaded" Uid="{Binding ProductArticleNumber}"/>
                                     <TextBlock Text="{Binding CostNew}"/>
                                 </StackPanel>
                             </StackPanel>

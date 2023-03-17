@@ -167,5 +167,16 @@ namespace ПишиСтирай.pages
         {
             classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto());
         }
+
+        private void tbCostOld_Loaded(object sender, RoutedEventArgs e)
+        {
+            TextBlock tb = (TextBlock)sender;
+            string index = tb.Uid;
+            Product product = classes.ClassBase.Base.Product.FirstOrDefault(z => z.ProductArticleNumber == index);
+            if(product.ProductDiscountAmount!=null && product.ProductDiscountAmount !=0)
+            {
+                tb.TextDecorations = TextDecorations.Strikethrough;
+            }
+        }
     }
 }

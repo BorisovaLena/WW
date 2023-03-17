@@ -62,7 +62,11 @@ namespace ПишиСтирай
         {
             get
             {
-                return ProductDiscountAmount + "%";
+                if(ProductDiscountAmount!=null && ProductDiscountAmount!=0)
+                {
+                    return "Скидка: " + ProductDiscountAmount + "%";
+                }
+                return null;
             }
         }
 
@@ -94,7 +98,7 @@ namespace ПишиСтирай
         {
             get
             {
-                if(ProductDiscountAmount!=0)
+                if(ProductDiscountAmount!=null && ProductDiscountAmount !=0)
                 {
                     return (SolidColorBrush)new BrushConverter().ConvertFrom("#7fff00"); 
                 }
