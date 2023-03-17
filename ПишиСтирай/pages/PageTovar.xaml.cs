@@ -168,7 +168,7 @@ namespace ПишиСтирай.pages
             classes.ClassFrame.mainFrame.Navigate(new pages.PageAuto());
         }
 
-        private void tbCostOld_Loaded(object sender, RoutedEventArgs e)
+        private void tbCostOld_Loaded(object sender, RoutedEventArgs e) //перечеркивание цены, если есть скидка
         {
             TextBlock tb = (TextBlock)sender;
             string index = tb.Uid;

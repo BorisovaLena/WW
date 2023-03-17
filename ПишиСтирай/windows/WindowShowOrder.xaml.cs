@@ -25,22 +25,25 @@ namespace ПишиСтирай.windows
             InitializeComponent();
             this.user = user;
             lvProduct.ItemsSource = classes.ClassBase.ProductsUser;
-            List<Order> countOrders = classes.ClassBase.Base.Order.ToList();
+
+            List<Order> countOrders = classes.ClassBase.Base.Order.ToList(); //вывод номера заказа
             int count = 0;
             foreach(Order order in countOrders)
             {
                 count = order.OrderID;
             }
             tbNumberOrder.Text = "Заказ "+(count + 1);
+
             CalculationSumma();
 
-            List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList();
+            List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList(); //заполнение comboBox адресами пунктов выдачи
             cmbPickupPoint.Items.Add("Выберите пункт выдачи");
             foreach(PickupPoint pickup in pickupPoints)
             {
                 cmbPickupPoint.Items.Add(pickup.City.CityName + ", " + pickup.Street.StreetName + ", " + pickup.PickupPointHouse);
             }
             cmbPickupPoint.SelectedIndex = 0;
+
             if(user!=null)
             {
                 tbFIO.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
@@ -51,7 +54,7 @@ namespace ПишиСтирай.windows
             }
         }
 
-        public void CalculationSumma() //подсчет стоимости и скидки выбранных товаров
+        public void CalculationSumma() //подсчет и вывод стоимости и скидки выбранных товаров
         {
             double summaEnd = 0, discount, summaStart = 0;
             foreach (Product pr in classes.ClassBase.ProductsUser)
@@ -122,7 +125,7 @@ namespace ПишиСтирай.windows
             {
                 Random random = new Random();
                 
-                bool morethree = true; //определяю, выбранных продуктов больше 3 на складе или нет
+                bool morethree = true; //определение, выбранных продуктов больше 3 на складе или нет
                 foreach (Product product in classes.ClassBase.ProductsUser)
                 {
                     if (product.ProductQuantityInStock < 3)
@@ -131,7 +134,7 @@ namespace ПишиСтирай.windows
                     }
                 }
                
-                Order order = new Order(); //создаю новый заказ
+                Order order = new Order(); //создание нового заказа
                 order.OrderStatus = 1;
                 if (morethree == false)
                 {
@@ -153,9 +156,8 @@ namespace ПишиСтирай.windows
 
                     classes.ClassBase.Base.Order.Add(order);
 
-                    foreach (Product product in classes.ClassBase.ProductsUser) //создаю новые элементы таблицы OrderProduct
+                    foreach (Product product in classes.ClassBase.ProductsUser) //создание новых элементов таблицы OrderProduct
                     {
-                        
                         OrderProduct orderProduct = new OrderProduct()
                         {
                             OrderID = order.OrderID,
@@ -171,8 +173,7 @@ namespace ПишиСтирай.windows
                 else
                 {
                     MessageBox.Show("Выберите пункт выдачи!!!");
-                }                
-                
+                }                  
             }
             catch
             {
@@ -180,7 +181,7 @@ namespace ПишиСтирай.windows
             }
         }
 
-        private void tbCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void tbCount_PreviewTextInput(object sender, TextCompositionEventArgs e) //запрет ввода символов в textBox для количества
         {
             if (!Char.IsDigit(e.Text, 0))
             {

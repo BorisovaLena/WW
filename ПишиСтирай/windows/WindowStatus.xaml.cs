@@ -45,7 +45,6 @@ namespace ПишиСтирай.windows
             {
                 MessageBox.Show("Ошибка!!!");
             }
-            
         }
     }
 }

@@ -27,10 +27,10 @@ namespace ПишиСтирай.windows
             cmbSortCount.SelectedIndex = 0;
         }
 
-        public void Filter()
+        public void Filter() //фильтрация данных
         {
             List<Order> listFilter = classes.ClassBase.Base.Order.ToList();
-            switch (cmbSortDiscount.SelectedIndex)
+            switch (cmbSortDiscount.SelectedIndex) //фильтрация по скидке
             {
                 case 1:
                     listFilter = listFilter.Where(x => x.SummaDiscountSort < 11).ToList();
@@ -43,7 +43,7 @@ namespace ПишиСтирай.windows
                     break;
             }
 
-            switch(cmbSortCount.SelectedIndex)
+            switch(cmbSortCount.SelectedIndex) //сотрировка по общей стоимости заказа
             {
                 case 1:
                     listFilter.Sort((x,y)=> x.SummaOrder.CompareTo(y.SummaOrder));

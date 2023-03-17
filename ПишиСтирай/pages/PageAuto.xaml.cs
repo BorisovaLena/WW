@@ -36,7 +36,6 @@ namespace ПишиСтирай.pages
             InitializeComponent();
             generationChapcha();
             spCapcha.Visibility = Visibility.Visible;
-           
         }
 
         private void DisTimer_Tick(object sender, EventArgs e)
