@@ -63,8 +63,7 @@ namespace ПишиСтирай.windows
         private void tbCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox tb = (TextBox)sender;
-            string index = tb.Uid;
-            
+            string index = tb.Uid;       
             if (tb.Text=="0") 
             {
                 Product product = classes.ClassBase.ProductsUser.FirstOrDefault(z => z.ProductArticleNumber == index);
