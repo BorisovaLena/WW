@@ -82,39 +82,64 @@ namespace ПишиСтирай.windows
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            List<PickupPoint> pickupPoints = classes.ClassBase.Base.PickupPoint.ToList(); //получаю выбранный пункт выдачи
-            int PP = cmbPickupPoint.SelectedIndex;
-
-            Random random = new Random();
-
-            bool morethree = true;
-            DateTime dateDelivery;
-            foreach (Product product in classes.ClassBase.ProductsUser)
+            try
             {
-                if(product.ProductQuantityInStock<3)
+                Random random = new Random();
+                
+                bool morethree = true; //определяю, выбранных продуктов больше 3 на складе или нет
+                foreach (Product product in classes.ClassBase.ProductsUser)
                 {
-                    morethree = false;
+                    if (product.ProductQuantityInStock < 3)
+                    {
+                        morethree = false;
+                    }
                 }
-            }
-            if(morethree==false)
-            {
-                dateDelivery = DateTime.Now.AddDays(6);
-            }
-            else
-            {
-                dateDelivery = DateTime.Now.AddDays(3);
-            }
-            Order order = new Order()
-            {
-                OrderStatus = 1,
-                OrderDeliveryDate = dateDelivery,
-                OrderPickupPoint = PP,
-                OrderDate = DateTime.Now,
-                OrderClient = user.UserID,
-                OrderCode = random.Next(100,1000),
-            };
+               
+                Order order = new Order(); //создаю новый заказ
+                order.OrderStatus = 1;
+                if (morethree == false)
+                {
+                    order.OrderDeliveryDate = DateTime.Now.AddDays(6);
+                }
+                else
+                {
+                    order.OrderDeliveryDate = DateTime.Now.AddDays(3);
+                }
+                if(cmbPickupPoint.SelectedIndex!=0)
+                {
+                    order.OrderPickupPoint = cmbPickupPoint.SelectedIndex;
+                    order.OrderDate = DateTime.Now;
+                    if (user != null)
+                    {
+                        order.OrderID = user.UserID;
+                    }
+                    order.OrderCode = random.Next(100, 1000); //генерация кода
 
-            foreach (Product product in classes.ClassBase.ProductsUser)
+                    classes.ClassBase.Base.Order.Add(order);
+
+                    foreach (Product product in classes.ClassBase.ProductsUser) //создаю новые элементы таблицы OrderProduct
+                    {
+                        OrderProduct orderProduct = new OrderProduct()
+                        {
+                            OrderID = order.OrderID,
+                            ProductArticleNumber = product.ProductArticleNumber,
+                            ProductCount = 1
+                        };
+                        classes.ClassBase.Base.OrderProduct.Add(orderProduct);
+                    }
+                    classes.ClassBase.Base.SaveChanges();
+                    MessageBox.Show("Успешное оформление заказа!!!");
+                }
+                else
+                {
+                    MessageBox.Show("Выберите пункт выдачи!!!");
+                }                
+                
+            }
+            catch
+            {
+                MessageBox.Show("Ошибочка!!!");
+            }
         }
     }
 }
