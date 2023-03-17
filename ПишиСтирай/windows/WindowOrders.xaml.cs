@@ -72,5 +72,10 @@ namespace ПишиСтирай.windows
             Order order = classes.ClassBase.Base.Order.FirstOrDefault(z => z.OrderID == index);
 
         }
+
+        private void btnDate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

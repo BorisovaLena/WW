@@ -60,7 +60,7 @@
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Button Name="btnStatus" Uid="{Binding OrderID}" Content="Изменить статус" Template="{StaticResource btn}" Click="btnStatus_Click"/>
-                                <Button Name="btnDate" Uid="{Binding OrderID}" Content="Изменить дату доставки" Template="{StaticResource btn}"/>
+                                <Button Name="btnDate" Uid="{Binding OrderID}" Content="Изменить дату доставки" Template="{StaticResource btn}" Click="btnDate_Click"/>
                             </StackPanel>
                         </Grid>
                     </Border>
