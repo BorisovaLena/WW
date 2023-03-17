@@ -15,7 +15,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
@@ -28,7 +28,7 @@
             </StackPanel>
             <ComboBox Name="cmbPickupPoint" Width="300"/>
         </StackPanel>
-        <ListView Grid.Row="1" Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="450">
+        <ListView Grid.Row="1" Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="440">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel HorizontalAlignment="Center"/>

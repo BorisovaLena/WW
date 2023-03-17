@@ -48,6 +48,10 @@ namespace ПишиСтирай.windows
             {
                 tbFIO.Text = user.UserSurname + " " + user.UserName + " " + user.UserPatronymic;
             }
+            else
+            {
+                tbFIO.Text = "Гость";
+            }
             
         }
 
