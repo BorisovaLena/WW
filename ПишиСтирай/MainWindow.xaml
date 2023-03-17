@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ПишиСтирай"
         mc:Ignorable="d"
-        Title="OOO Пиши-Стирай" Height="800" Width="900"
-        MinHeight="800" MinWidth="900"
+        Title="OOO Пиши-Стирай" Height="820" Width="900"
+        MinHeight="820" MinWidth="900"
         Icon="pictures/icon.ico">
     <Grid>
         <Grid.RowDefinitions>

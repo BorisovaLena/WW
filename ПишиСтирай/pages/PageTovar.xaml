@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ПишиСтирай.pages"
       mc:Ignorable="d" 
-      d:DesignHeight="660" d:DesignWidth="800"
+      d:DesignHeight="620" d:DesignWidth="800"
       Title="PageTovar">
 
     <Page.Resources>
@@ -16,9 +16,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="6*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
+            <TextBlock Text="Товары" Style="{StaticResource TBZag}"/>
             <Button Name="btnExit" Content="Выйти" Click="btnExit_Click" Template="{StaticResource btn}" Width="150" HorizontalAlignment="Right"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <ComboBox Name="cmbSortCount" SelectionChanged="cmbSortCount_SelectionChanged" Width="300" Margin="5">
@@ -39,16 +40,11 @@
             <TextBlock Name="tbCountData"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="400">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+        <ListView Grid.Row="1" Name="lvTovar" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" Height="380">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderBrush="Black">
-                        <Grid Width="700" Background="{Binding Color}">
+                        <Grid Background="{Binding Color}" >
                             <Grid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Добавить к заказу" Click="MenuItem_Click" Uid="{Binding ProductArticleNumber}"/>

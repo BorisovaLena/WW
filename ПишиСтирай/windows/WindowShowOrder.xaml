@@ -28,16 +28,11 @@
             </StackPanel>
             <ComboBox Name="cmbPickupPoint" Width="300"/>
         </StackPanel>
-        <ListView Grid.Row="1" Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="440">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel HorizontalAlignment="Center"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
+        <ListView Grid.Row="1" Name="lvProduct" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" Height="440">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border Padding="5" CornerRadius="5" BorderBrush="Black">
-                        <Grid Width="700" Background="{Binding Color}">
+                        <Grid Background="{Binding Color}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>

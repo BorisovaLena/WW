@@ -28,6 +28,7 @@ namespace ПишиСтирай.pages
         public PageAuto()
         {
             InitializeComponent();
+            classes.ClassBase.ProductsUser = new List<Product>();
         }
 
         public PageAuto(int i)
