@@ -13,10 +13,10 @@
             <TextBlock Text="Авторизация" Style="{StaticResource TBZag}" Margin="20"/>
             <StackPanel Width="300">
                 <GroupBox Header="Введите логин">
-                    <TextBox Name="tbLodin" Text="admin"/>
+                    <TextBox Name="tbLodin"/>
                 </GroupBox>
                 <GroupBox Header="Введите пароль">
-                    <PasswordBox Name="Password" Password="admin"/>
+                    <PasswordBox Name="Password"/>
                 </GroupBox>
                 <StackPanel Name="spCapcha" Width="250" Visibility="Collapsed">
                     <Canvas Name="can" Width="150" Height="100" Background="AliceBlue"></Canvas>

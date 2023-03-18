@@ -168,6 +168,7 @@ namespace ПишиСтирай.windows
                     }
                     classes.ClassBase.Base.SaveChanges();
                     MessageBox.Show("Успешное оформление заказа!!!");
+                    classes.ClassBase.ProductsUser.Clear();
                     Close();
                 }
                 else

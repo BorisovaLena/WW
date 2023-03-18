@@ -32,7 +32,7 @@ namespace ПишиСтирай
         public int ProductQuantityInStock { get; set; }
         public string ProductStatus { get; set; }
         public string ProductPhoto { get; set; }
-        public Nullable<int> ProductUnits { get; set; }
+        public int ProductUnits { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
